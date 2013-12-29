@@ -2,7 +2,7 @@ This is a Vim extension that emulates iA Writer environment when editing Markdow
 
 It requires [goyo.vim](https://github.com/junegunn/goyo.vim) and it works by setting global Goyo callbacks that triggers special setup for Markdown, reStructuredText and text files.
 
-This is an improvment of my initial version called [vim-zenroom](https://github.com/amix/vim-zenroom). Please read more here [
+This is an improvement of my initial version called [vim-zenroom](https://github.com/amix/vim-zenroom). Please read more here [
 zenroom for Vim: Focusing only on the essential](http://amix.dk/blog/post/19744#zenroom-for-Vim-Focsuing-only-on-the-essential).
 
 
