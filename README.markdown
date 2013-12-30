@@ -14,7 +14,7 @@ Please note that this might not work perfectly with your colorscheme. Patches ar
 
 Additionally you may want to have a shortcut. Add this to your vimrc:
 
-  nnoremap <silent> <leader>z :Goyo<cr>
+    nnoremap <silent> <leader>z :Goyo<cr>
 
 ## Inspirations/Similar
 * [Writing Markdown With Style in Vim](http://astrails.com/blog/2013/8/12/writing-markdown-with-style-in-vim)
