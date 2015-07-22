@@ -62,14 +62,50 @@ function! s:markdown_room()
     exec( "hi StatusLineNC " . l:highlightfgbgcolor )
 endfunction
 
+function! s:pandoc_room()
+    set background=light
+    set linespace=8
+
+    hi Normal guibg=gray95
+    hi NonText guifg=gray95
+    hi FoldColumn guibg=gray95
+    hi CursorLine guibg=gray90
+    " hi Title gui=bold guifg=gray25
+    hi Cursor guibg=#15abdd
+
+    hi pandocStrong gui=bold cterm=bold guifg=gray25
+    hi pandocEmphasis guifg=gray25 gui=underline cterm=underline
+
+    hi pandocReferenceURL guifg=#2fb3a6
+    hi pandocReferenceLabel guifg=#317849
+    hi pandocLinkTip guifg=#317849
+
+    if has('gui_running')
+        let l:highlightbgcolor = "guibg=#f2f2f2" 
+        let l:highlightfgbgcolor = "guifg=#f2f2f2" . " " . l:highlightbgcolor
+    else
+        let l:highlightbgcolor = "ctermbg=bg" 
+        let l:highlightfgbgcolor = "ctermfg=bg" . " " . l:highlightbgcolor
+    endif
+
+    exec( "hi Normal " . l:highlightbgcolor )
+    exec( "hi VertSplit " . l:highlightfgbgcolor )
+    exec( "hi NonText " . l:highlightfgbgcolor )
+    exec( "hi StatusLine " . l:highlightfgbgcolor )
+    exec( "hi StatusLineNC " . l:highlightfgbgcolor )
+endfunction
+
 function! s:zenroom_goyo_before()
     if !has("gui_running")
         return
     endif
     let is_mark_or_rst = &filetype == "markdown" || &filetype == "rst" || &filetype == "text"
+    let is_pandoc = &filetype == "pandoc" 
 
     if is_mark_or_rst
         call s:markdown_room()
+    elseif is_pandoc
+        call s:pandoc_room()
     endif
 endfunction
 
@@ -77,7 +113,7 @@ function! s:zenroom_goyo_after()
     if !has("gui_running")
         return
     endif
-    let is_mark_or_rst = &filetype == "markdown" || &filetype == "rst" || &filetype == "text"
+    let is_mark_or_rst = &filetype == "markdown" || &filetype == "rst" || &filetype == "text" || &filetype == "pandoc"
     if is_mark_or_rst
         set linespace=0
 
