@@ -87,4 +87,10 @@ function! s:zenroom_goyo_after()
     endif
 endfunction
 
-let g:goyo_callbacks = [ function('s:zenroom_goyo_before'), function('s:zenroom_goyo_after') ]
+" append to callbacks if they are already set. Otherwise set the callbacks.
+if exists('g:goyo_callbacks')
+  call add(g:goyo_callbacks, function('s:zenroom_goyo_before'))
+  call add(g:goyo_callbacks, function('s:zenroom_goyo_after'))
+else
+  let g:goyo_callbacks = [ function('s:zenroom_goyo_before'), function('s:zenroom_goyo_after') ]
+endif
