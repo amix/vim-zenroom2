@@ -4,7 +4,7 @@ It requires [goyo.vim](https://github.com/junegunn/goyo.vim) and it works by set
 
 Please note that this might not work perfectly with your colorscheme. Patches are welcome to fix this :-)
 
-## Installaion and usage
+## Installation and usage
 
 * Install [goyo.vim](https://github.com/junegunn/goyo.vim)
 * In command mode type :Goyo
@@ -19,4 +19,3 @@ Additionally you may want to have a shortcut. Add this to your vimrc:
 * [lite-dfm](https://github.com/bilalq/lite-dfm)
 * [vimroom](https://github.com/mikewest/vimroom)
 * [vim-zenroom](https://github.com/amix/vim-zenroom)
-
