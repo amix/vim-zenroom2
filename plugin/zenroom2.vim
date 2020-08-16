@@ -16,12 +16,6 @@ let g:loaded_zenroom2_plugin = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Configuration
-"
-" Save the current `background` value for reset later
-let s:save_background = ""
-if exists( "&background" )
-    let s:save_background = &background
-endif
 
 function! s:markdown_room()
     set background=light
@@ -46,12 +40,13 @@ function! s:markdown_room()
     hi markdownIdDeclaration guifg=#317849 gui=bold
     hi markdownListMarker guifg=#317849
     hi Cursor guibg=#15abdd
+    hi clear SignColumn
 
-    if has('gui_running')
-        let l:highlightbgcolor = "guibg=#f2f2f2" 
+    if &termguicolors || has('gui_running')
+        let l:highlightbgcolor = "guibg=#f2f2f2"
         let l:highlightfgbgcolor = "guifg=#f2f2f2" . " " . l:highlightbgcolor
     else
-        let l:highlightbgcolor = "ctermbg=bg" 
+        let l:highlightbgcolor = "ctermbg=bg"
         let l:highlightfgbgcolor = "ctermfg=bg" . " " . l:highlightbgcolor
     endif
 
@@ -63,7 +58,13 @@ function! s:markdown_room()
 endfunction
 
 function! s:zenroom_goyo_before()
-    if !has("gui_running")
+    " Save the current `background` value for reset later
+    let s:save_background = ""
+    if exists( "&background" )
+        let s:save_background = &background
+    endif
+
+    if !&termguicolors || !has('gui_running')
         return
     endif
     let is_mark_or_rst = &filetype == "markdown" || &filetype == "rst" || &filetype == "text"
@@ -74,7 +75,7 @@ function! s:zenroom_goyo_before()
 endfunction
 
 function! s:zenroom_goyo_after()
-    if !has("gui_running")
+    if !&termguicolors || !has('gui_running')
         return
     endif
     let is_mark_or_rst = &filetype == "markdown" || &filetype == "rst" || &filetype == "text"
