@@ -87,4 +87,5 @@ function! s:zenroom_goyo_after()
     endif
 endfunction
 
-let g:goyo_callbacks = [ function('s:zenroom_goyo_before'), function('s:zenroom_goyo_after') ]
+autocmd! User GoyoEnter nested call <SID>zenroom_goyo_before()
+autocmd! User GoyoLeave nested call <SID>zenroom_goyo_after()
